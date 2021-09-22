@@ -70,12 +70,12 @@ import LoadingSpin from "../shared/LoadingSpin";
           if (d.mimeType === "application/vnd.google-apps.folder") {
             return (
               <div>
-                <i
+                {/* <i
                 key={d.id}
                   onClick={() => setShowFiles({ show: true, id, name })}
                   className="fas fa-folder fa-3x text-gray-500 hover:text-gray-800 cursor-pointer"
                 ></i>
-                <p className=" overflow-hidden">{d.name}</p>
+                <p className=" overflow-hidden">{d.name}</p> */}
               </div>
             );
           } else {
