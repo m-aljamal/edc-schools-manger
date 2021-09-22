@@ -49,6 +49,7 @@ export default function AddNewPersonForm({
     try {
       const res = await axios.put(`/api/names/${type}/${oldData._id}`, {
         ...values,
+        _id: oldData._id,
         image,
         graduateImage,
         contractImage,

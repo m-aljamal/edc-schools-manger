@@ -31,7 +31,7 @@ handler.put(async (req: Request, res: NextApiResponse) => {
     if (
       checkEmail &&
       req.query.type !== "services" &&
-      checkEmail._id !== req.user._id
+      checkEmail._id !== req.body._id
     ) {
       return res.status(400).json({ error: "الايميل مستخدم لشخص اخر" });
     }
