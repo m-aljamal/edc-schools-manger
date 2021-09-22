@@ -31,14 +31,14 @@ const FolderFiles = ({ folder, setShowFiles }) => {
       <div>
         {!showfolders.show ? (
           <div className="lg:grid-cols-6 grid grid-cols-4 text-center gap-10 ">
-            {data.map((d) => (
+            {/* {data.map((d) => (
               <Folder
                 id={d.id}
                 name={d.name}
                 key={d.id}
                 setShowFiles={setShowFolders}
               />
-            ))}
+            ))} */}
           </div>
         ) : (
           <FileList setShowFolders={setShowFolders} folder={showfolders} />
