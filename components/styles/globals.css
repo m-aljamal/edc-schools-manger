@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap");
+.ant-menu {
+  direction: ltr;
+}
+.ant-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.adminMenu {
+  direction: inherit !important;
+  text-align: right;
+}
+
+.ant-menu-item,
+.ant-menu-submenu-title,
+.ant-dropdown-menu {
+  direction: ltr !important;
+}
+
+.ant-modal-header {
+  background-color: #424141;
+  text-align: center;
+}
+.ant-modal-title,
+.ant-modal-close-x {
+  color: white;
+  font-weight: bold;
+}
+
+.ant-table-cell {
+  text-align-last: right;
+}
+
+.ant-empty {
+  text-align-last: center;
+}
+
+.ant-pagination {
+  direction: initial;
+}
+
+body {
+  direction: rtl;
+}
+
+.ant-menu-submenu-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ant-menu-submenu {
+  font-weight: bold;
+}
+
+.ant-form-item-control-input-content {
+  text-align: right;
+}
+
+.ant-steps-item-title::before {
+  position: absolute;
+  top: 16px;
+  /* left: 100%; */
+  right: 100%;
+  display: none;
+  width: 9999px;
+  height: 1px;
+  background: #f0f0f0;
+  content: "";
+}
+.ant-steps-item-title::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  background: #f0f0f0;
+  content: "";
+}
+
+.ant-table-footer {
+  background-color: rgba(34, 41, 56, 0.1);
+}
+
+.profileText {
+  @apply text-gray-700 font-bold text-base py-2;
+}
