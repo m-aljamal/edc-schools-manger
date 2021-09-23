@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useSWR from "swr";
 import LoadingSpin from "../shared/LoadingSpin";
-import FolderFiles from "./FolderFiles";
+import FolderList from "./documents/FolderList";
 
 export default function TeacherDocList() {
   const { data, error } = useSWR("/api/drive", { dedupingInterval: 60000 });
@@ -19,7 +19,7 @@ export default function TeacherDocList() {
   };
   return (
     <>
-      <FolderFiles folder={showFiles} setShowFiles={null} />
+      <FolderList folder={showFiles} setShowFiles={null} />
     </>
   );
 }

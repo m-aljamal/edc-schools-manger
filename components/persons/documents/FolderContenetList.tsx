@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import useSWR from "swr";
 import LoadingSpin from "../../shared/LoadingSpin";
+import Folder from "./Folder";
 import UpArrow from "./UpArrow";
 export default function FileList({ setShowFolders, folder }) {
   const [loading, setLoading] = useState(false);
+
   const { data, error } = useSWR(`/api/drive/getFiles/${folder.id}`);
   if (!data) {
     return <LoadingSpin />;
@@ -63,25 +65,23 @@ export default function FileList({ setShowFolders, folder }) {
       />
 
       <div className="lg:grid-cols-6 grid grid-cols-4 text-center gap-10 mt-10 ">
-        
         {data?.map((folder) => {
           const chooseIcon = fileIcon[folder.mimeType];
           if (folder.mimeType === "application/vnd.google-apps.folder") {
             return (
-              <div>
-                 {folder.name}
-                {/* <i
-                  key={d.id}
-                  onClick={() => setShowFiles({ show: true, id, name })}
-                  className="fas fa-folder fa-3x text-gray-500 hover:text-gray-800 cursor-pointer"
-                ></i>
-                <p className=" overflow-hidden">{d.name}</p> */}
+              <div key={folder.id}>
+                <Folder
+                  id={folder.id}
+                  name={folder.name}
+                  key={folder.id}
+                  setShowFiles={setShowFolders}
+                />
               </div>
             );
           } else {
             return (
               <div key={folder?.id}>
-                  {folder.name}
+                {folder.name}
                 {/* <i
                   onClick={() => handleView(d?.id)}
                   className={`far fa-file-${chooseIcon?.name} fa-3x  text-${chooseIcon?.color}-500
