@@ -18,6 +18,7 @@ const AddNewButton = ({
         size="middle"
         onClick={() => setIsModalVisible(true)}
       />
+
       <CustomModel
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}

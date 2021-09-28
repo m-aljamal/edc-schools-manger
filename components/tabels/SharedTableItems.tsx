@@ -1,4 +1,3 @@
-import DropdownMenu from "./DropdownMenu";
 import { Avatar } from "antd";
 import { getColumnSearchProps } from "./searchInTable";
 import { address } from "../../static/address";
@@ -27,7 +26,7 @@ export const NameAndImageShredColumns = (
       title: "الصورة",
       width: 75,
       dataIndex: "image",
-      render: (text) => (
+      render: (text, record) => (
         <>
           {text.url ? (
             <Avatar size="large" src={text.url} alt="image" />

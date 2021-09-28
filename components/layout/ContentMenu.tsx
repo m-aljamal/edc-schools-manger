@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import AdministrativeDocs from "../views/AdministrativeDocs";
 import Assets from "../views/Assets";
+const SychologistForm = dynamic(() => import("../views/SychologistForm"));
 const NamesList = dynamic(() => import("../views/NamesList"));
 const AddAbcence = dynamic(() => import("../views/AddAbcence"));
 const AbcenceMonthPreview = dynamic(

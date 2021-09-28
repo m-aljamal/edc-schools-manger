@@ -36,6 +36,7 @@ const TableComponent = ({ columns, allData }) => {
         scroll={{ x: 1000, y: 400 }}
         showSorterTooltip={false}
         pagination={{ position: ["bottomRight"] }}
+      
         footer={() => (
           <p style={{ textAlign: "start" }}>
             العدد الاجمالي:

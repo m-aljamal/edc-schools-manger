@@ -7,13 +7,17 @@ import TeacherContentMenu from "./TeacherContentMenu";
 import MenuList from "./MenuList";
 import TeacherMenuList from "./TeacherMenuList";
 import AdminMenuList from "./adminMenuList";
+import SychologistMenyList from "./SychologistMenyList";
+import SychologistContent from "./SychologistContent";
 export default function Dashboard({
   currentUser,
   userType,
   schools,
   schoolName,
 }) {
-  const [currentContnet, setCurrentContent] = useState("home");
+  const [currentContnet, setCurrentContent] = useState(
+    userType === "مرشد نفسي" ? "students" : "home"
+  );
   const [schoolId, setSchoolId] = useState(null);
 
   const handleClick = (e) => {
@@ -46,9 +50,11 @@ export default function Dashboard({
     },
 
     "مرشد نفسي": {
-      content: <p>مرشد نفسي</p>,
+      content: (
+        <SychologistContent schoolId={null} showContent={currentContnet} />
+      ),
       menu: (
-        <TeacherMenuList
+        <SychologistMenyList
           selectedKeys={currentContnet}
           handleClick={handleClick}
           theme="light"

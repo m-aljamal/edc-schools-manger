@@ -8,7 +8,7 @@ export default function Sidebar({ currentUser, showMenuList }) {
 
   return (
     <>
-      <nav className="bg-pink-600 md:bg-white md:right-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl flex flex-wrap   justify-between relative md:w-72 z-10 py-4 px-2">
+      <nav className="bg-blue-400 md:bg-white md:right-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl flex flex-wrap   justify-between relative md:w-72 z-10 py-4 px-2">
         <div className="  md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-11/12 mx-auto">
           <button
             className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
@@ -18,7 +18,7 @@ export default function Sidebar({ currentUser, showMenuList }) {
             <i className="fas fa-bars"></i>
           </button>
           <div
-            className="md:block text-center
+            className=" hidden sm:block text-center
            md:pb-2 text-gray-600 mr-0 whitespace-nowrap text-base md:text-xl font-bold p-4 px-0
           "
           >
