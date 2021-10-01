@@ -1,10 +1,10 @@
-import Card from "../statistics/cards";
-import Bar_chart from "../statistics/Bar_chart";
-import Bar_chart_division from "../statistics/Bar_chart_division";
-import Footer from "../layout/Footer";
-import AbsenceTableSummary from "../statistics/AbsenceTableSummary";
-import EmpStuTableSummary from "../statistics/EmpStuTableSummary";
-import DaysProgress from "../statistics/DaysProgress";
+import Card from "../../statistics/cards";
+import Bar_chart from "../../statistics/Bar_chart";
+import Bar_chart_division from "../../statistics/Bar_chart_division";
+import Footer from "../../layout/Footer";
+import AbsenceTableSummary from "../../statistics/AbsenceTableSummary";
+import EmpStuTableSummary from "../../statistics/EmpStuTableSummary";
+import DaysProgress from "../../statistics/DaysProgress";
 import Image from "next/image";
 export default function SingleSchoolStatistics({
   employees,

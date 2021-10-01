@@ -3,8 +3,11 @@ import axios from "axios";
 import router from "next/router";
 import React from "react";
 import { PoweroffOutlined } from "@ant-design/icons";
+import { useAuth } from "../../context/AuthContext";
 
-const UserDropdown = ({ currentUser }) => {
+const UserDropdown = () => {
+  const { currentUserName } = useAuth();
+
   const handleLogout = async () => {
     try {
       await axios.post("/api/users/logout");
@@ -27,7 +30,7 @@ const UserDropdown = ({ currentUser }) => {
       <Dropdown overlay={menu} placement="bottomLeft" arrow trigger={["click"]}>
         <div className="flex items-center border   text-gray-100  p-1 rounded-md font-bold cursor-pointer ">
           <i className=" fas fa-angle-down ml-2"></i>
-          <p>{currentUser?.name}</p>
+          <p>{currentUserName}</p>
         </div>
       </Dropdown>
     </>

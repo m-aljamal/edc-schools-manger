@@ -1,9 +1,9 @@
 import { useState } from "react";
-import AddNewButton from "../shared/AddNewButton";
-import AddDoc from "../forms/AddDoc";
-import TeacherDocList from "../persons/TeacherDocList";
-import AddTeacherDoc from "../forms/AddTeacherDoc";
-import Documents from "../persons/documents";
+import AddNewButton from "../../shared/AddNewButton";
+import AddDoc from "../../forms/AddDoc";
+import TeacherDocList from "../../persons/TeacherDocList";
+import AddTeacherDoc from "../../forms/AddTeacherDoc";
+import Documents from "../../persons/documents";
 export default function AdministrativeDocs({ schoolId, ...props }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [destroyOnClose, setdestroyOnClose] = useState(false);

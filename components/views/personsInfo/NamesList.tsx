@@ -1,12 +1,12 @@
 import useSWR from "swr";
 import axios from "axios";
 import { useState } from "react";
-import AddNewButton from "../shared/AddNewButton";
-import { TeachersTable } from "../tabels/TeachersTable";
-import { AdministratorsTable } from "../tabels/AdministratorsTable";
-import { ServicesTable } from "../tabels/ServicesTable";
-import { StudentsTable } from "../tabels/StudentsTable";
-import AddNewPersonForm from "../persons/AddNewPersonForm";
+import AddNewButton from "../../shared/AddNewButton";
+import { TeachersTable } from "../../tabels/TeachersTable";
+import { AdministratorsTable } from "../../tabels/AdministratorsTable";
+import { ServicesTable } from "../../tabels/ServicesTable";
+import { StudentsTable } from "../../tabels/StudentsTable";
+import AddNewPersonForm from "../../persons/AddNewPersonForm";
 const NamesList = ({ type, schoolId }) => {
   const apiUrl = `/api/names/${type}`;
 

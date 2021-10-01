@@ -1,15 +1,17 @@
 import dynamic from "next/dynamic";
-import AdministrativeDocs from "../views/AdministrativeDocs";
-import Assets from "../views/Assets";
-const SychologistForm = dynamic(() => import("../views/SychologistForm"));
-const NamesList = dynamic(() => import("../views/NamesList"));
-const AddAbcence = dynamic(() => import("../views/AddAbcence"));
-const AbcenceMonthPreview = dynamic(
-  () => import("../views/AbcenceMonthPreview")
+import AdministrativeDocs from "../views/folders/AdministrativeDocs";
+import Assets from "../views/assets/Assets";
+const SychologistForm = dynamic(
+  () => import("../views/personsInfo/SychologistForm")
 );
-const SingleSchool = dynamic(() => import("../views/SingleSchool"));
-const SchoolLibrary = dynamic(() => import("../views/SchoolLibrary"));
-const Activites = dynamic(() => import("../views/Activites"));
+const NamesList = dynamic(() => import("../views/personsInfo/NamesList"));
+const AddAbcence = dynamic(() => import("../views/abcence/AddAbcence"));
+const AbcenceMonthPreview = dynamic(
+  () => import("../views/abcence/AbcenceMonthPreview")
+);
+const SingleSchool = dynamic(() => import("../views/statistics/SingleSchool"));
+const SchoolLibrary = dynamic(() => import("../views/library/SchoolLibrary"));
+const Activites = dynamic(() => import("../views/activities/Activites"));
 const ContentMenu = ({ schoolId, showContent }) => {
   const menuContent = {
     home: <SingleSchool schoolId={schoolId} />,

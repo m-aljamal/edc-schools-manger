@@ -1,7 +1,7 @@
 import { useState } from "react";
-import AddSchoolAssets from "../forms/AddSchoolAssets";
-import AddNewButton from "../shared/AddNewButton";
-import SchoolAssetsTable from "../tabels/SchoolAssetsTable";
+import AddSchoolAssets from "../../forms/AddSchoolAssets";
+import AddNewButton from "../../shared/AddNewButton";
+import SchoolAssetsTable from "../../tabels/SchoolAssetsTable";
 
 export default function Assets({ schoolId }) {
   const [isModalVisible, setIsModalVisible] = useState(false);

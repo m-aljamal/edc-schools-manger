@@ -9,12 +9,7 @@ import TeacherMenuList from "./TeacherMenuList";
 import AdminMenuList from "./adminMenuList";
 import SychologistMenyList from "./SychologistMenyList";
 import SychologistContent from "./SychologistContent";
-export default function Dashboard({
-  currentUser,
-  userType,
-  schools,
-  schoolName,
-}) {
+export default function Dashboard({ userType, schools }) {
   const [currentContnet, setCurrentContent] = useState(
     userType === "مرشد نفسي" ? "students" : "home"
   );
@@ -126,12 +121,9 @@ export default function Dashboard({
   }
   return (
     <>
-      <Sidebar
-        showMenuList={contentType[userType].menu}
-        currentUser={currentUser}
-      />
+      <Sidebar showMenuList={contentType[userType].menu} />
       <div className="relative md:mr-72 bg-blueGray-100">
-        <Navbar currentUser={currentUser} schoolName={schoolName} />
+        <Navbar />
         {contentType[userType].content}
       </div>
     </>

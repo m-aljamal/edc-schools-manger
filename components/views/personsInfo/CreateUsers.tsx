@@ -1,29 +1,30 @@
-import { useState } from "react";
-import AddSchoolActivite from "../forms/AddSchoolActivite";
-import AddNewButton from "../shared/AddNewButton";
-import SchoolActivites from "../tabels/SchoolActivites";
+import React, { useState } from "react";
+import AddUserForm from "../../persons/AddUserForm";
+import AddNewButton from "../../shared/AddNewButton";
+import SchoolSupervisor from "../../tabels/SchoolSupervisor";
 
-export default function Activites({ schoolId }) {
+export default function  CreateUsers() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [destroyOnClose, setdestroyOnClose] = useState(false);
+
   return (
     <div className=" container pt-8">
       <div className="flex justify-between mb-10">
-        <div className="font-bold md:text-lg text-base">الأنشطة المدرسية:</div>
+        <div className="font-bold md:text-lg text-base">جميع المشرفين:</div>
         <AddNewButton
           destroyOnClose={destroyOnClose}
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
-          modelTitle={`اضافة نشاط جديد`}
+          modelTitle={`اضافة مشرف جديد`}
           modelData={
-            <AddSchoolActivite
+            <AddUserForm
               setIsModalVisible={setIsModalVisible}
               setdestroyOnClose={setdestroyOnClose}
             />
           }
         />
       </div>
-      <SchoolActivites schoolId={schoolId} />
+      <SchoolSupervisor />
     </div>
   );
 }

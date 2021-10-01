@@ -20,7 +20,10 @@ export default function TeacherMenuList({
         جميع الطلاب
       </Menu.Item>
       <Menu.Item key="sychologistForm" icon={<LeftOutlined />}>
-        أستمارة اجتماعية
+        أستمارة اجتماعية جديدة
+      </Menu.Item>
+      <Menu.Item key="allsychologist" icon={<LeftOutlined />}>
+        الأستمارات الاجتماعية
       </Menu.Item>
       <Menu.Item key="administativeDocs" icon={<FileDoneOutlined />}>
         الملفات الادارية

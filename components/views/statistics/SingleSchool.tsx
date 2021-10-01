@@ -15,7 +15,6 @@ const SingleSchool = ({ schoolId }) => {
   const employees = data?.totalEmployee[0];
   const students = data?.totalStudents[0];
   const empAbcense = data?.empAbcenseByYear[0];
-console.log(data);
 
   return (
     <SingleSchoolStatistics

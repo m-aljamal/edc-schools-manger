@@ -1,14 +1,15 @@
 import { connectToDB, school, user } from "../../db";
 import Dashboard from "../../components/layout/dashboard";
+import { useAuth } from "../../context/AuthContext";
+import { useEffect } from "react";
 const UserDashboard = ({ currentUser, schools }) => {
-  return (
-    <Dashboard
-      currentUser={currentUser}
-      userType="admin"
-      schools={schools}
-      schoolName="مشرف عام"
-    />
-  );
+  console.log(currentUser);
+  const { addUserName, addSchoolName } = useAuth();
+  useEffect(() => {
+    addSchoolName("مشرف عام");
+    addUserName(currentUser.name);
+  }, [addUserName, addSchoolName]);
+  return <Dashboard userType="admin" schools={schools} />;
 };
 
 export default UserDashboard;
@@ -31,6 +32,7 @@ export async function getServerSideProps(ctx) {
     ctx.res.writeHead(302, { Location: "/" });
     ctx.res.end();
   }
+
   props.schools = await school.getSchools(db);
 
   return {

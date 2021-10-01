@@ -2,10 +2,11 @@ import { useState } from "react";
 import Link from "next/link";
 
 import UserDropdown from "./userDropdown";
+import { useAuth } from "../../context/AuthContext";
 
-export default function Sidebar({ currentUser, showMenuList }) {
+export default function Sidebar({ showMenuList }) {
   const [collapseShow, setCollapseShow] = useState("hidden");
-
+  const { currentUserName } = useAuth();
   return (
     <>
       <nav className="bg-blue-400 md:bg-white md:right-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl flex flex-wrap   justify-between relative md:w-72 z-10 py-4 px-2">
@@ -22,12 +23,12 @@ export default function Sidebar({ currentUser, showMenuList }) {
            md:pb-2 text-gray-600 mr-0 whitespace-nowrap text-base md:text-xl font-bold p-4 px-0
           "
           >
-            <p className="text-white md:text-black">{currentUser?.name}</p>
+            <p className="text-white md:text-black">{currentUserName}</p>
             <p className="font-normal text-white md:text-black">منصة EDC</p>
           </div>
           {/* User */}
           <div className="md:hidden   ">
-            <UserDropdown currentUser={currentUser} />
+            <UserDropdown />
           </div>
           {/* Collapse */}
           <div

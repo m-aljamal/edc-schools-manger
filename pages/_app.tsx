@@ -7,15 +7,19 @@ import "../components/styles/nprogress.css";
 import "../components/styles/globals.css";
 import "tailwindcss/tailwind.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { AuthProvider } from "../context/AuthContext";
 
 function MyApp({ Component, pageProps }) {
   Router.events.on("routeChangeStart", () => NProgress.start());
   Router.events.on("routeChangeComplete", () => NProgress.done());
   Router.events.on("routeChangeError", () => NProgress.done());
+
   return (
     <>
       <SWRConfig value={{ fetcher: (url) => axios(url).then((r) => r.data) }}>
-        <Component {...pageProps} />
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
       </SWRConfig>
     </>
   );

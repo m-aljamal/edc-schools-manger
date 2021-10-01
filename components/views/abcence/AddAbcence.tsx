@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import AddNewAbcence from "../abcence/AddNewAbcence";
+import AddNewAbcence from "../../abcence/AddNewAbcence";
 export default function AddAbcence({ type }) {
   const apirul = `/api/names/${type}`;
   const { data } = useSWR(apirul, {

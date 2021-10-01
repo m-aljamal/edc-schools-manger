@@ -1,6 +1,6 @@
 import React from "react";
 import useSWR from "swr";
-import { StudentsTable } from "../tabels/StudentsTable";
+import { StudentsTable } from "../../tabels/StudentsTable";
 
 export default function TeacherStudentsNameList() {
   const { data, error } = useSWR("/api/teacher");

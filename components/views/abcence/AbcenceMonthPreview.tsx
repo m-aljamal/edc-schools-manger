@@ -1,7 +1,7 @@
 import { Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import MonthTable from "../abcence/AbcenceMonthTable";
+import MonthTable from "../../abcence/AbcenceMonthTable";
 import axios from "axios";
 import useSWR from "swr";
 
