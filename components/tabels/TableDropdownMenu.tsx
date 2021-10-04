@@ -3,33 +3,46 @@ import React, { useState } from "react";
 import AddNewPersonForm from "../persons/AddNewPersonForm";
 import DeletePerson from "../persons/DeletePerson";
 import ProfilePage from "../persons/ProfilePage";
+import SocialForm from "../persons/SocialForm";
 import CustomModel from "../shared/CustomModel";
-
+import { useRouter } from "next/router";
 export default function DropdownMeny({ record }) {
-  const [openEdit, setOpenEdit] = useState(false);
-  const [openDelete, setOpenDelete] = useState(false);
-  const [openProfile, setOpenProfile] = useState(false);
+  const router = useRouter();
+
   const [destroyOnClose, setdestroyOnClose] = useState(false);
   const [visible, setVisible] = useState({
     type: "",
     show: false,
   });
+
   const menu = (
     <Menu>
-      <Menu.Item
-        key="edit"
-        onClick={() => {
-          // setOpenEdit(true);
-          setVisible({ show: true, type: "edit" });
-        }}
-        icon={<i className="far fa-edit"></i>}
-      >
-        تعديل
-      </Menu.Item>
+      {router.query.id !== "مرشد نفسي" && (
+        <Menu.Item
+          key="edit"
+          onClick={() => {
+            setVisible({ show: true, type: "edit" });
+          }}
+          icon={<i className="far fa-edit"></i>}
+        >
+          تعديل
+        </Menu.Item>
+      )}
+
+      {router.query.id === "مرشد نفسي" && (
+        <Menu.Item
+          key="socialForm"
+          onClick={() => {
+            setVisible({ show: true, type: "socialForm" });
+          }}
+          icon={<i className="far fa-edit"></i>}
+        >
+          استمارة اجتماعية
+        </Menu.Item>
+      )}
       <Menu.Item
         key="profile"
         onClick={() => {
-          // setOpenProfile(true);
           setVisible({ show: true, type: "profile" });
         }}
         className="text-gray-600"
@@ -37,17 +50,18 @@ export default function DropdownMeny({ record }) {
       >
         مشاهدة
       </Menu.Item>
-      <Menu.Item
-        key="delete"
-        onClick={() => {
-          // setOpenDelete(true);
-          setVisible({ show: true, type: "delete" });
-        }}
-        className="text-red-400"
-        icon={<i className="far fa-trash-alt"></i>}
-      >
-        حذف
-      </Menu.Item>
+      {router.query.id !== "مرشد نفسي" && (
+        <Menu.Item
+          key="delete"
+          onClick={() => {
+            setVisible({ show: true, type: "delete" });
+          }}
+          className="text-red-400"
+          icon={<i className="far fa-trash-alt"></i>}
+        >
+          حذف
+        </Menu.Item>
+      )}
     </Menu>
   );
   return (
@@ -57,7 +71,6 @@ export default function DropdownMeny({ record }) {
       </Dropdown>
 
       <CustomModel
-        // padding={showContent.profile}
         isModalVisible={visible.show}
         setIsModalVisible={() => setVisible({ show: false, type: "" })}
         modelDate={
@@ -71,25 +84,29 @@ export default function DropdownMeny({ record }) {
             />
           ) : visible.type === "delete" ? (
             <DeletePerson
-              close={() => setOpenDelete(false)}
+              onClose={() => setVisible({ show: false, type: "" })}
               type={record.type}
               id={record._id}
               name={record.name}
             />
-          ) : (
+          ) : visible.type === "profile" ? (
             <ProfilePage
-              // close={() => setOpenProfile(false)}
               type={record.type}
               // id={record._id}
 
               data={record}
             />
+          ) : (
+            <SocialForm type={record.type} id={record._id} name={record.name} />
           )
         }
         title={
-          openDelete
+          visible.type === "delete"
             ? `حذف معلومات ${record?.name}`
-            : openEdit && `تعديل معلومات ${record?.name}`
+            : visible.type === "edit"
+            ? `تعديل معلومات ${record?.name}`
+            : visible.type === "socialForm" &&
+              `استمارة جديدة للطالب ${record?.name}`
         }
         destroyOnClose={destroyOnClose}
       />

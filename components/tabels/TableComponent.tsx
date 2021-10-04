@@ -2,7 +2,6 @@ import { Table } from "antd";
 import { useEffect, useState } from "react";
 
 import TableDropdownMenu from "./TableDropdownMenu";
-
 const TableComponent = ({ columns, allData }) => {
   const [total, setTotal] = useState("");
 
@@ -33,10 +32,9 @@ const TableComponent = ({ columns, allData }) => {
         bordered
         loading={!allData}
         onChange={handleTableChange}
-        scroll={{ x: 1000, y: 400 }}
+        scroll={{ x: 1100, y: 400 }}
         showSorterTooltip={false}
         pagination={{ position: ["bottomRight"] }}
-      
         footer={() => (
           <p style={{ textAlign: "start" }}>
             العدد الاجمالي:

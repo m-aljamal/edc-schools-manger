@@ -19,9 +19,7 @@ export default function TeacherMenuList({
       <Menu.Item key="students" icon={<LeftOutlined />}>
         جميع الطلاب
       </Menu.Item>
-      <Menu.Item key="sychologistForm" icon={<LeftOutlined />}>
-        أستمارة اجتماعية جديدة
-      </Menu.Item>
+
       <Menu.Item key="allsychologist" icon={<LeftOutlined />}>
         الأستمارات الاجتماعية
       </Menu.Item>

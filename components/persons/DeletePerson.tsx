@@ -2,9 +2,8 @@ import { message } from "antd";
 import axios from "axios";
 import { trigger } from "swr";
 
-export default function DeletePerson({ type, id, name, close }) {
+export default function DeletePerson({ type, id, name, onClose }) {
   const handleDelete = async () => {
-    close();
     try {
       const deleteURL = `/api/names/${type}/${id}`;
       const url = `/api/names/${type}`;
@@ -32,7 +31,7 @@ export default function DeletePerson({ type, id, name, close }) {
         </button>
         <button
           className="py-1 px-8 text-gray-800 fornt-bold border rounded-md"
-          onClick={close}
+          onClick={onClose}
         >
           الغاء
         </button>
