@@ -1,5 +1,7 @@
+import { message } from "antd";
+import axios from "axios";
 import { FormItem, InputNumber, Select, Input } from "formik-antd";
-import React from "react";
+import React, { useState } from "react";
 import { typeOfCertifcate } from "../../utils/SchoolSubjects";
 import FormStepper, { FormikStep } from "../forms/FormStepper";
 import TextInput from "../forms/TextInput";
@@ -10,9 +12,8 @@ const layout = {
   wrapperCol: { span: 16 },
 };
 
-export default function SocialForm({ type, id, name }) {
-  console.log({ type, id, name });
-
+export default function SocialForm({ type, id, name, closeForm }) {
+  const [loading, setLoading] = useState(false);
   const initialValues = {
     fatherDegree: "",
     motherDegree: "",
@@ -39,8 +40,24 @@ export default function SocialForm({ type, id, name }) {
     mangerOpinion: "",
   };
 
-  const handleSubmit = (values, helpers) => {
-    console.log(values);
+  const handleSubmit = async (values, helpers) => {
+    setLoading(true);
+    try {
+      const res = await axios.post("/api/socialForm", {
+        ...values,
+        studentName: name,
+        studentId: id,
+      });
+      if (res.status === 200) {
+        setLoading(false);
+        helpers.resetForm();
+        closeForm();
+        message.success("تم انشاء الاستمارة بنجاح");
+      }
+    } catch (error) {
+      setLoading(false);
+      message.error(error.response.data.error);
+    }
   };
   return (
     <FormStepper initialValues={initialValues} onSubmit={handleSubmit}>

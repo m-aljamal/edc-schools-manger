@@ -97,7 +97,15 @@ export default function DropdownMeny({ record }) {
               data={record}
             />
           ) : (
-            <SocialForm type={record.type} id={record._id} name={record.name} />
+            <SocialForm
+              closeForm={() => {
+                setVisible({ show: false, type: "" });
+                setdestroyOnClose(true);
+              }}
+              type={record.type}
+              id={record._id}
+              name={record.name}
+            />
           )
         }
         title={

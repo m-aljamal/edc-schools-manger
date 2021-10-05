@@ -2,7 +2,6 @@ import { useState } from "react";
 import FormStepper, { FormikStep } from "./FormStepper";
 import { FormItem, Select, DatePicker, InputNumber } from "formik-antd";
 
-
 import { classes, division, familySituation } from "../../utils/SchoolSubjects";
 import { sharedInitialValues } from "./shredInitialValues";
 import {
@@ -10,11 +9,7 @@ import {
   ContactFormStep,
   ImagesFormStep,
 } from "./SharedFormStep";
-import {
-  InfoValidation,
-  personalInfoValidation,
-  subjectValidation,
-} from "./formValidation";
+import { personalInfoValidation, subjectValidation } from "./formValidation";
 import TextInput from "./TextInput";
 const { Option } = Select;
 

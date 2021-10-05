@@ -45,6 +45,10 @@ export const getServerSideProps = async (ctx) => {
       schoolName = await school.getSchoolByDirector(db, currentUser._id);
     }
   }
-  props.schoolName = schoolName.name;
+  if (!schoolName?.name) {
+    ctx.res.writeHead(302, { Location: "/" });
+    ctx.res.end();
+  }
+  props.schoolName = schoolName?.name;
   return { props };
 };
