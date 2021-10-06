@@ -117,9 +117,11 @@ export default function SocialForm({ type, id, name, closeForm }) {
         >
           <Input.TextArea name="servicesProvided" />
         </FormItem>
-        <YesNoOptions
+
+        <SelectWithOptions
           label="الأسرة من أبناء البلدة أم نازحة"
           name="isDisplaced"
+          options={["مقيم", "نازح"]}
         />
         <SelectWithOptions
           label="نوع السكن"
@@ -135,7 +137,7 @@ export default function SocialForm({ type, id, name, closeForm }) {
         <SelectWithOptions
           label="مشكلة الطالب"
           name="problemType"
-          options={["نفسية", "اجتماعية", "صحية "]}
+          options={["نفسية", "اجتماعية", "صحية ", "لايوجد"]}
         />
         <FormItem {...layout} label="رأي المرشد الطلابي" name="advisorOpinion">
           <Input.TextArea name="advisorOpinion" />
