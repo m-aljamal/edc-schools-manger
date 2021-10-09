@@ -226,6 +226,9 @@ export const studentsAbcenseResons = [
   {
     text: "غير مبرر",
   },
+  {
+    text: "مبرر",
+  },
 ];
 
 export const schoolAssets = [
