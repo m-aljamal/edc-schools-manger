@@ -6,6 +6,8 @@ import ProfilePage from "../persons/ProfilePage";
 import SocialForm from "../persons/SocialForm";
 import CustomModel from "../shared/CustomModel";
 import { useRouter } from "next/router";
+import SeeStudentSocial from "../persons/SeeStudentSocial";
+import StudentsSocialForm from "../forms/StudentsSocialForm";
 export default function DropdownMeny({ record }) {
   const router = useRouter();
 
@@ -38,6 +40,18 @@ export default function DropdownMeny({ record }) {
           icon={<i className="far fa-edit"></i>}
         >
           استمارة اجتماعية
+        </Menu.Item>
+      )}
+      {record.type === "students" && (
+        <Menu.Item
+          key="مشاهدة استمارة الطالب"
+          onClick={() => {
+            setVisible({ show: true, type: "seeSocial" });
+          }}
+          className="text-gray-600"
+          icon={<i className="far fa-address-card"></i>}
+        >
+          مشاهدة استمارة الطالب
         </Menu.Item>
       )}
       <Menu.Item
@@ -96,8 +110,8 @@ export default function DropdownMeny({ record }) {
 
               data={record}
             />
-          ) : (
-            <SocialForm
+          ) : visible.type === "socialForm" ? (
+            <StudentsSocialForm
               closeForm={() => {
                 setVisible({ show: false, type: "" });
                 setdestroyOnClose(true);
@@ -106,6 +120,10 @@ export default function DropdownMeny({ record }) {
               id={record._id}
               name={record.name}
             />
+          ) : (
+            visible.type === "seeSocial" && (
+              <SeeStudentSocial student={record} />
+            )
           )
         }
         title={

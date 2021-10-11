@@ -31,4 +31,14 @@ handler.post(async (req: Request, res) => {
   res.send(newSocialForm);
 });
 
+handler.put(async (req: Request, res) => {
+  const updateSocial = await req.db.collection("social-froms").updateOne(
+    { _id: req.body._id },
+    {
+      $set: req.body.values,
+    }
+  );
+  res.json(updateSocial);
+});
+
 export default handler;

@@ -2,6 +2,7 @@ import { message } from "antd";
 import axios from "axios";
 import { FormItem, InputNumber, Select, Input } from "formik-antd";
 import React, { useState } from "react";
+import { trigger } from "swr";
 import { typeOfCertifcate } from "../../utils/SchoolSubjects";
 import FormStepper, { FormikStep } from "../forms/FormStepper";
 import TextInput from "../forms/TextInput";
@@ -12,32 +13,39 @@ const layout = {
   wrapperCol: { span: 16 },
 };
 
-export default function SocialForm({ type, id, name, closeForm }) {
+export default function SocialForm({
+  type,
+  id,
+  name,
+  closeForm,
+  oldData,
+  edit,
+}) {
   const [loading, setLoading] = useState(false);
   const initialValues = {
-    fatherDegree: "",
-    motherDegree: "",
-    fatherJob: "",
-    motherJob: "",
-    familyCount: "",
-    isFamilyDevided: "",
-    isThereHandicapped: "",
-    nameofGuardian: "",
-    relativeType: "",
-    houseType: "",
-    rentAmount: "",
-    isDisplaced: "",
-    numberOfSponsoredKids: "",
-    amountOfSponsor: "",
-    relativePhoneNumber: "",
-    problemType: "",
-    problemDescription: "",
-    educationStatus: "",
-    servicesProvided: "",
+    fatherDegree: oldData?.fatherDegree || "",
+    motherDegree: oldData?.motherDegree || "",
+    fatherJob: oldData?.fatherJob || "",
+    motherJob: oldData?.motherJob || "",
+    familyCount: oldData?.familyCount || "",
+    isFamilyDevided: oldData?.isFamilyDevided || "",
+    isThereHandicapped: oldData?.isThereHandicapped || "",
+    nameofGuardian: oldData?.nameofGuardian || "",
+    relativeType: oldData?.relativeType || "",
+    houseType: oldData?.houseType || "",
+    rentAmount: oldData?.rentAmount || "",
+    isDisplaced: oldData?.isDisplaced || "",
+    numberOfSponsoredKids: oldData?.numberOfSponsoredKids || "",
+    amountOfSponsor: oldData?.amountOfSponsor || "",
+    relativePhoneNumber: oldData?.relativePhoneNumber || "",
+    problemType: oldData?.problemType || "",
+    problemDescription: oldData?.problemDescription || "",
+    educationStatus: oldData?.educationStatus || "",
+    servicesProvided: oldData?.servicesProvided || "",
 
-    advisorOpinion: "",
+    advisorOpinion: oldData?.advisorOpinion || "",
 
-    mangerOpinion: "",
+    mangerOpinion: oldData?.mangerOpinion || "",
   };
 
   const handleSubmit = async (values, helpers) => {
@@ -51,6 +59,7 @@ export default function SocialForm({ type, id, name, closeForm }) {
       if (res.status === 200) {
         setLoading(false);
         helpers.resetForm();
+        trigger(`/api/socialForm/find/${id}`);
         closeForm();
         message.success("تم انشاء الاستمارة بنجاح");
       }
@@ -59,8 +68,31 @@ export default function SocialForm({ type, id, name, closeForm }) {
       message.error(error.response.data.error);
     }
   };
+  const handleEdit = async (values, helpers) => {
+    setLoading(true);
+
+    try {
+      const res = await axios.put("/api/socialForm", {
+        values,
+        _id: oldData._id,
+      });
+      if (res.status === 200) {
+        trigger(`/api/socialForm/find/${id}`);
+        setLoading(false);
+        helpers.resetForm();
+        closeForm();
+        message.success("تم تعديل الاستمارة بنجاح");
+      }
+    } catch (error) {
+      setLoading(false);
+      message.error(error.response.data.error);
+    }
+  };
   return (
-    <FormStepper initialValues={initialValues} onSubmit={handleSubmit}>
+    <FormStepper
+      initialValues={initialValues}
+      onSubmit={edit ? handleEdit : handleSubmit}
+    >
       <FormikStep label="" validationSchema={null} loading={false}>
         <SelectWithOptions
           label="المستوى الثقافي للأب"
