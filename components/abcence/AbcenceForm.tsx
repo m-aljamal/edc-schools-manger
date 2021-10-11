@@ -3,6 +3,7 @@ import { DatePicker, Select, Table, Button } from "antd";
 import { NameAndImageShredColumns } from "../tabels/SharedTableItems";
 import {
   classes,
+  division,
   employeesAbcenseResons,
   studentsAbcenseResons,
 } from "../../utils/SchoolSubjects";
@@ -99,6 +100,12 @@ export const AbcenceForm = ({
       filters: classes,
       onFilter: (value, record) => record.classNumber?.includes(value),
     },
+    {
+      title: "الشعبة",
+      dataIndex: "division",
+      filters: division,
+      onFilter: (value, record) => record.division?.includes(value),
+    },
 
     ...abcenceReason,
   ];
@@ -106,6 +113,7 @@ export const AbcenceForm = ({
   const handleDateChange = (date, dateText) => {
     setAbcenceDate(dateText);
   };
+
   return (
     <div>
       <DatePicker
@@ -127,6 +135,7 @@ export const AbcenceForm = ({
         block
         onClick={handleTimeSheet}
         type="primary"
+        className="my-8"
       >
         حفظ
       </Button>
